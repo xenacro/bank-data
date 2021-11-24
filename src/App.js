@@ -7,6 +7,7 @@ function App() {
   const cookies = new Cookies();
   const [favs, setFavs] = useState('');
   const [city, setCity] = useState('');
+  const [dropCity, setDropCity] = useState('');
   const [banks, setBanks] = useState([]);
   const [banksShow, setBanksShow] = useState([]);
   const [pgNo, setPgNo] = useState(0);
@@ -59,14 +60,14 @@ function App() {
             <div className='col-12 col-md-4'>
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {city||`Select City`}
+                  {dropCity||`Select City`}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" onClick={()=>setCity('MUMBAI')}>MUMBAI</a>
-                  <a class="dropdown-item" onClick={()=>setCity('NALANDA')}>NALANDA</a>
-                  <a class="dropdown-item" onClick={()=>setCity('PATNA')}>PATNA</a>
-                  <a class="dropdown-item" onClick={()=>setCity('LIMADIA')}>LIMADIA</a>
-                  <a class="dropdown-item" onClick={()=>setCity('WAGHODIA')}>WAGHODIA</a>
+                  <a class="dropdown-item" onClick={()=>{setCity('MUMBAI'); setDropCity('MUMBAI')}}>MUMBAI</a>
+                  <a class="dropdown-item" onClick={()=>{setDropCity('NALANDA'); setCity('NALANDA');}}>NALANDA</a>
+                  <a class="dropdown-item" onClick={()=>{setDropCity('PATNA'); setCity('PATNA');}}>PATNA</a>
+                  <a class="dropdown-item" onClick={()=>{setDropCity('LIMADIA'); setCity('LIMADIA');}}>LIMADIA</a>
+                  <a class="dropdown-item" onClick={()=>{setDropCity('WAGHODIA'); setCity('WAGHODIA');}}>WAGHODIA</a>
                 </div>
               </div>
             </div>
