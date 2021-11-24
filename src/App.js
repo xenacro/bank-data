@@ -52,10 +52,10 @@ function App() {
         <div className='container'>
           <div className='row'>
             <div className='col-12 mb-4 mt-3'>
-              <h3>Bank Branches</h3>
+              <h2>Bank Branches</h2>
             </div>
           </div>
-          <div className='row mt-4'>
+          <div className='row mt-1'>
             <div className='col-12 col-md-4'>
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,51 +81,62 @@ function App() {
               </div>
             </div>
           </div>
-          <div className='row mt-4'>
-            <div className='col-12'>
-              <table class="table table-hover table-dark table-responsive">
-                <thead>
-                  <tr>
-                    <th scope="col" className='linear' onClick={()=>{sortBy=='bank_id'?setAsc(!asc):setAsc(true); setSortBy('bank_id');}} >{sortBy=='bank_id'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  Bank Id. </th>
-                    <th scope="col" className='linear' onClick={()=>{sortBy=='bank_name'?setAsc(!asc):setAsc(true); setSortBy('bank_name');}} >{sortBy=='bank_name'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  Bank Name </th>
-                    <th scope="col" className='linear' onClick={()=>{sortBy=='branch'?setAsc(!asc):setAsc(true); setSortBy('branch');}} >{sortBy=='branch'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  Branch</th>
-                    <th scope="col" className='linear' onClick={()=>{sortBy=='ifsc'?setAsc(!asc):setAsc(true); setSortBy('ifsc');}} >{sortBy=='ifsc'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  IFSC</th>
-                    <th scope="col" className='linear' onClick={()=>{sortBy=='city'?setAsc(!asc):setAsc(true); setSortBy('city');}} >{sortBy=='city'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  City</th>
-                    <th scope="col" className='linear' onClick={()=>{sortBy=='district'?setAsc(!asc):setAsc(true); setSortBy('district');}} >{sortBy=='district'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  District</th>
-                    <th scope="col" className='linear' onClick={()=>{sortBy=='state'?setAsc(!asc):setAsc(true); setSortBy('state');}} >{sortBy=='state'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  State</th>
-                    <th scope="col" className='linear' onClick={()=>{sortBy=='address'?setAsc(!asc):setAsc(true); setSortBy('address');}} >{sortBy=='address'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  Address</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {banks.length>pgNo*10 && banksShow.map((item) => 
-                    item?.bank_id&&(<tr style={{fontSize: 16}}>
-                    <th scope="row"><img onClick={()=>{cookies.set('favs', favs+item?.ifsc+', '); setDum(dum+1); console.log(dum+1);}} src={favs.includes(item?.ifsc) ? "https://img.icons8.com/fluency/48/000000/star.png" : "https://img.icons8.com/color/48/000000/star--v1.png"} style={{height: 18}} /> {item?.bank_id} </th>
-                    <td>{item?.bank_name}</td>
-                    <td>{item?.branch}</td>
-                    <td>{item?.ifsc}</td>
-                    <td>{item?.city}</td>
-                    <td>{item?.district}</td>
-                    <td>{item?.state}</td>
-                    <td>{item?.address}</td>
-                  </tr>)
-                  )}
-                </tbody>
-              </table>
+          {banks.length>0 ? 
+            <>
+              <div className='row mt-4'>
+                <div className='col-12'>
+                  <table class="table table-hover table-dark table-responsive">
+                    <thead>
+                      <tr>
+                        <th scope="col" className='linear' onClick={()=>{sortBy=='bank_id'?setAsc(!asc):setAsc(true); setSortBy('bank_id');}} >{sortBy=='bank_id'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  Bank Id. </th>
+                        <th scope="col" className='linear' onClick={()=>{sortBy=='bank_name'?setAsc(!asc):setAsc(true); setSortBy('bank_name');}} >{sortBy=='bank_name'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  Bank Name </th>
+                        <th scope="col" className='linear' onClick={()=>{sortBy=='branch'?setAsc(!asc):setAsc(true); setSortBy('branch');}} >{sortBy=='branch'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  Branch</th>
+                        <th scope="col" className='linear' onClick={()=>{sortBy=='ifsc'?setAsc(!asc):setAsc(true); setSortBy('ifsc');}} >{sortBy=='ifsc'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  IFSC</th>
+                        <th scope="col" className='linear' onClick={()=>{sortBy=='city'?setAsc(!asc):setAsc(true); setSortBy('city');}} >{sortBy=='city'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  City</th>
+                        <th scope="col" className='linear' onClick={()=>{sortBy=='district'?setAsc(!asc):setAsc(true); setSortBy('district');}} >{sortBy=='district'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  District</th>
+                        <th scope="col" className='linear' onClick={()=>{sortBy=='state'?setAsc(!asc):setAsc(true); setSortBy('state');}} >{sortBy=='state'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  State</th>
+                        <th scope="col" className='linear' onClick={()=>{sortBy=='address'?setAsc(!asc):setAsc(true); setSortBy('address');}} >{sortBy=='address'&&(asc?(<span>&#x022C1;</span>):(<span>&#x022C0;</span>))}  Address</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {banks.length>pgNo*10 && banksShow.map((item) => 
+                        item?.bank_id&&(<tr style={{fontSize: 16}}>
+                        <th scope="row"><img onClick={()=>{cookies.set('favs', favs+item?.ifsc+', '); setDum(dum+1); console.log(dum+1);}} src={favs.includes(item?.ifsc) ? "https://img.icons8.com/fluency/48/000000/star.png" : "https://img.icons8.com/color/48/000000/star--v1.png"} style={{height: 18}} /> {item?.bank_id} </th>
+                        <td>{item?.bank_name}</td>
+                        <td>{item?.branch}</td>
+                        <td>{item?.ifsc}</td>
+                        <td>{item?.city}</td>
+                        <td>{item?.district}</td>
+                        <td>{item?.state}</td>
+                        <td>{item?.address}</td>
+                      </tr>)
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className='row'>
+                <div className='col-12 d-flex justify-content-center'>
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" onClick={()=>pgNo>0&&setPgNo(pgNo-1)} style={{backgroundColor:pgNo<=0&&'grey'}}>Previous</a></li>
+                      {pgNo>0 && <li class="page-item"><a class="page-link" onClick={()=>setPgNo(pgNo-1)}>{pgNo}</a></li>}
+                      <li class="page-item"><a class="page-link" style={{backgroundColor:'grey'}}>{pgNo+1}</a></li>
+                      {banksShow[9]?.bank_id && <li class="page-item"><a class="page-link" onClick={()=>setPgNo(pgNo+1)}>{pgNo+2}</a></li>}
+                      <li class="page-item"><a class="page-link" style={{backgroundColor:!banksShow[9]?.bank_id&&'grey'}} onClick={()=>banksShow[9]?.bank_id&&setPgNo(pgNo+1)}>Next</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </>
+            :
+            <div className='row mt-5'>
+              <div className='col-12'>
+                <h4>Select the top cities or search them.</h4>
+              </div>
             </div>
-          </div>
-          <div className='row'>
-            <div className='col-12 d-flex justify-content-center'>
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" onClick={()=>pgNo>0&&setPgNo(pgNo-1)} style={{backgroundColor:pgNo<=0&&'grey'}}>Previous</a></li>
-                  {pgNo>0 && <li class="page-item"><a class="page-link" onClick={()=>setPgNo(pgNo-1)}>{pgNo}</a></li>}
-                  <li class="page-item"><a class="page-link" style={{backgroundColor:'grey'}}>{pgNo+1}</a></li>
-                  {banksShow[9]?.bank_id && <li class="page-item"><a class="page-link" onClick={()=>setPgNo(pgNo+1)}>{pgNo+2}</a></li>}
-                  <li class="page-item"><a class="page-link" style={{backgroundColor:!banksShow[9]?.bank_id&&'grey'}} onClick={()=>banksShow[9]?.bank_id&&setPgNo(pgNo+1)}>Next</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+          }
+          
         </div>
       </header>
     </div>
